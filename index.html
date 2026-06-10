@@ -13,22 +13,17 @@
         <a href="index.html" class="nav-link active">Home</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="archive.html" class="nav-link">Archive</a>
-        <a href="works.html" class="nav-link">Works</a>
     </div>
 </nav>
 
-<div class="site-wrapper">
+<div class="site-wrapper" style="background: linear-gradient(180deg, rgba(26, 54, 214, 0.25) 0%, rgba(26, 54, 214, 0.08) 40%, #ffffff 100%);">
     <div class="hero-wrap">
-        <div class="hero-bg-obj"></div>
         <div class="hero-row">
-            <div class="hw l">
-                <h1 class="hh">일상에</h1>
-            </div>
-            <div class="hero-mark">
-                <div class="mark-outer"><div class="mark-inner"></div></div>
-            </div>
-            <div class="hw r">
-                <h1 class="hh">깃든 AI</h1>
+            <h1 class="hh">일상에 깃든 AI</h1>
+            <div class="hero-keywords">
+                <span>AI</span>
+                <span>무의식</span>
+                <span>의존도</span>
             </div>
         </div>
 
@@ -37,8 +32,63 @@
                 <div class="sg-line"></div>
             </div>
         </div>
-
     </div>
+
+    <!-- Team Projects Section -->
+    <section class="team-projects-section">
+        <div class="inner">
+            <div class="tp-grid">
+                <!-- Card 1 -->
+                <a href="https://park-sung-eun.github.io/ip_manual/#entry" class="tp-card" target="_blank" rel="noopener noreferrer">
+                    <div class="tp-img-wrap">
+                        <img class="tp-img" src="https://i.postimg.cc/kGJpkCBs/AI-1ingieob-pyoji(keulobganeung).png" alt="Thumbnail">
+                    </div>
+                    <div class="tp-content">
+                        <div class="tp-name">박성은</div>
+                        <h3 class="tp-title">AI활용 1인기업 생존서</h3>
+                        <p class="tp-desc">AI의 발전으로 수많은 1인 기업인이 생기고 있다. 놓치고 있는 사실은 IP를 보호해야한다는 것이다. 이건 그걸 위한 생존서이다.</p>
+                        <div class="tp-btn">프로젝트 보기 &rarr;</div>
+                    </div>
+                </a>
+                <!-- Card 2 -->
+                <a href="https://youtu.be/0bdNyaNr1SQ" class="tp-card" target="_blank" rel="noopener noreferrer">
+                    <div class="tp-img-wrap">
+                        <img class="tp-img" src="https://i.postimg.cc/ZnbM1mCj/yeomjiu-sseomneil.png" alt="Thumbnail">
+                    </div>
+                    <div class="tp-content">
+                        <div class="tp-name">염지우</div>
+                        <h3 class="tp-title">노년층을 위한<br>AI 디지털 가이드북</h3>
+                        <p class="tp-desc">AI를 낯설고 복잡한 젊은 세대만의 기술이 아닌 일상 속에서 이해하고 활용할 수 있도록,<br>디지털에 대한 인식과 자신감을 자연스럽게 확장해주는 미디어 콘텐츠이다.</p>
+                        <div class="tp-btn">프로젝트 보기 &rarr;</div>
+                    </div>
+                </a>
+                <!-- Card 3 -->
+                <a href="https://www.figma.com/proto/rVK1AzNBFTqEWuucfo0JY8/Untitled?node-id=9-171&p=f&viewport=455%2C340%2C0.02&t=UbIhCocuiJhIlIHq-1&scaling=contain&content-scaling=fixed&page-id=0%3A1" class="tp-card" target="_blank" rel="noopener noreferrer">
+                    <div class="tp-img-wrap">
+                        <img class="tp-img" src="https://i.postimg.cc/yx1bwKkS/dangsin-i-wonhaneun-AI-pyoji.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="tp-content">
+                        <div class="tp-name">최서희</div>
+                        <h3 class="tp-title">당신이 원하는 AI</h3>
+                        <p class="tp-desc">설문조사를 통해 얻은 맞춤형 AI 모델을 버거 레시피로 시각화하여 한눈에 탐색하는 'AI-burger' 프로젝트.</p>
+                        <div class="tp-btn">프로젝트 보기 &rarr;</div>
+                    </div>
+                </a>
+                <!-- Card 4 -->
+                <a href="https://chooijian.github.io/AI-Test/" class="tp-card" target="_blank" rel="noopener noreferrer">
+                    <div class="tp-img-wrap">
+                        <img class="tp-img" src="https://i.postimg.cc/CdTXtBnM/seukeulinsyas-2026-06-11-ojeon-3-17-12.png" alt="Thumbnail">
+                    </div>
+                    <div class="tp-content">
+                        <div class="tp-name">최지안</div>
+                        <h3 class="tp-title">Real or AI?</h3>
+                        <p class="tp-desc">AI가 만든 콘텐츠와 인간의 창작물을 구별하는 과정을 통해<br>사용자의 판단 방식과 인식 유형을 탐색하는 참여형 인터랙티브 웹 프로젝트.</p>
+                        <div class="tp-btn">프로젝트 보기 &rarr;</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 </div>
 
 <footer class="site-footer">
@@ -51,5 +101,50 @@
     </div>
 </footer>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const titles = document.querySelectorAll('.hero-row .hh');
+    let delay = 0.2; // 초기 딜레이
+    
+    titles.forEach(title => {
+        const text = title.textContent.trim();
+        title.innerHTML = '';
+        [...text].forEach(char => {
+            const span = document.createElement('span');
+            if (char === ' ') {
+                span.innerHTML = '&nbsp;';
+            } else {
+                span.textContent = char;
+            }
+            if (char === 'A' || char === 'I') {
+                span.classList.add('ai-bounce-char');
+                span.style.animationDelay = `${delay}s`;
+            } else {
+                span.style.opacity = '0';
+                span.style.filter = 'blur(8px)';
+                span.style.display = 'inline-block';
+                span.style.transform = 'translateY(10px)';
+                span.style.transition = 'opacity 0.5s ease-out, filter 0.5s ease-out, transform 0.5s ease-out';
+                span.style.transitionDelay = `${delay}s`;
+            }
+            title.appendChild(span);
+            delay += 0.15; // 글자당 간격
+        });
+        delay += 0.1; // 단어 사이 약간의 틈
+    });
+
+    // 렌더링 직후 실행하여 애니메이션 트리거
+    setTimeout(() => {
+        document.querySelectorAll('.hero-row .hh span:not(.ai-bounce-char)').forEach(span => {
+            span.style.opacity = '1';
+            span.style.filter = 'blur(0px)';
+            span.style.transform = 'translateY(0)';
+        });
+        document.querySelectorAll('.hero-row .hh span.ai-bounce-char').forEach(span => {
+            span.classList.add('animate');
+        });
+    }, 50);
+});
+</script>
 </body>
 </html>

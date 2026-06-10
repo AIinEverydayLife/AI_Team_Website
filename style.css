@@ -96,12 +96,12 @@ a { text-decoration: none; color: inherit; }
    ================================================================ */
 .hero-wrap {
     height: 100vh;
+    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    background: var(--white);
-    overflow: hidden;
+    background: transparent;
 }
 .hero-wrap::before {
     content: '';
@@ -110,38 +110,114 @@ a { text-decoration: none; color: inherit; }
     background-size: 28px 28px;
     pointer-events: none;
 }
-.hero-bg-obj {
-    position: absolute;
-    top: -10vh; left: 0;
-    width: 100%; height: 110vh;
-    background-image: url('https://i.postimg.cc/8CPcgbck/1c9e4e8d785353c23689d0db73cf6d15.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.5;
-    filter: blur(5px) grayscale(20%);
-    pointer-events: none;
-    z-index: 0;
-}
+
 .hero-row {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     max-width: var(--max);
     padding: 0 var(--pad);
     position: relative; z-index: 1;
+    margin-top: -12vh; /* Move title up */
+    gap: 24px;
 }
 .hw { flex: 1; display: flex; }
 .hw.l { justify-content: flex-end; padding-right: clamp(28px, 5.5vw, 88px); }
 .hw.r { justify-content: flex-start; padding-left: clamp(28px, 5.5vw, 88px); }
 .hh {
-    font-size: clamp(2.4rem, 3.8vw, 4.8rem);
-    font-weight: 800;
+    font-size: clamp(3.2rem, 5.5vw, 6.4rem);
+    font-weight: 700;
     letter-spacing: -.04em;
     line-height: 1;
     color: var(--black);
     white-space: nowrap;
+}
+.ai-bounce-char {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(10px);
+}
+.ai-bounce-char.animate {
+    animation: aiBounce 0.8s cubic-bezier(0.28, 0.84, 0.42, 1) forwards;
+}
+
+@keyframes aiBounce {
+    0% {
+        opacity: 0;
+        filter: blur(8px);
+        transform: translateY(10px);
+    }
+    30% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(-20px); /* Bounces upward */
+    }
+    50% {
+        transform: translateY(4px); /* Minor bounce downward */
+    }
+    75% {
+        transform: translateY(-2px); /* Tiny bounce upward */
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0); /* Settles at original position */
+    }
+}
+
+.hero-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.hero-keywords span {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--black);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    
+    /* Animation state */
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeInTag 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    
+    /* Hover transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+}
+.hero-keywords span:nth-child(1) {
+    animation-delay: 1.8s;
+}
+.hero-keywords span:nth-child(2) {
+    animation-delay: 1.9s;
+}
+.hero-keywords span:nth-child(3) {
+    animation-delay: 2.0s;
+}
+.hero-keywords span:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+@keyframes fadeInTag {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .hero-mark {
     flex-shrink: 0;
@@ -652,4 +728,133 @@ a { text-decoration: none; color: inherit; }
     transform: scale(1.03);
     background: #f0f4ff;
     transition-delay: 1.1s;
+}
+
+/* ================================================================
+   Team Projects (Home)
+   ================================================================ */
+.team-projects-section {
+    padding: 0 var(--pad) 140px;
+    margin-top: -25vh; /* Pull cards up to overlap the hero background */
+    background: transparent; /* Let the hero image show through */
+    position: relative;
+    z-index: 10;
+}
+
+.tp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.tp-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--black);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.tp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+}
+
+.tp-img-wrap {
+    width: 100%;
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    background: #f4f5f7;
+}
+
+.tp-img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.03);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tp-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.tp-card:hover .tp-img {
+    transform: scale(1.05);
+}
+
+.tp-content {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px;
+    flex-grow: 1;
+}
+
+.tp-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+}
+
+.tp-title {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+}
+
+.tp-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray);
+    margin-bottom: 40px;
+    flex-grow: 1;
+    word-break: keep-all;
+}
+
+.tp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 40px;
+    align-self: flex-start;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.tp-card:hover .tp-btn {
+    background: #1128A4;
+}
+
+@media (max-width: 1024px) {
+    .tp-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .tp-grid {
+        grid-template-columns: 1fr;
+    }
+    .tp-card { padding: 28px 24px; }
+    .tp-title { font-size: 22px; }
 }
