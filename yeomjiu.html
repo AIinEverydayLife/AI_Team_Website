@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노년층을 위한 AI 디지털 가이드북 — 일상에 깃든 AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="nav-brand hh">일상에 깃든 AI</a>
+    <div class="nav-links">
+        <a href="about.html" class="nav-link">Data Archive</a>
+    </div>
+</nav>
+
+<div class="site-wrapper" style="background: linear-gradient(180deg, rgba(26, 54, 214, 0.15) 0%, rgba(26, 54, 214, 0.05) 40%, #ffffff 100%);">
+    <div class="inner">
+        <!-- Project Detail Hero -->
+        <section class="project-detail-hero">
+            <span class="pd-tag">Motion</span>
+            <h1 class="pd-title">노년층을 위한 AI 디지털 가이드북</h1>
+            <p class="pd-author">염지우</p>
+        </section>
+
+        <!-- Project Detail Content & Video -->
+        <section class="project-detail-content">
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1200302758?autoplay=1" title="노년층을 위한 AI 디지털 가이드북" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="pd-grid">
+                <div class="pd-sec">
+                    <h2 class="pd-sec-title">기획 배경</h2>
+                    <p class="pd-sec-desc">급속도로 변화하는 디지털 시대 속에서 인공지능(AI)은 현대인에게 필수적인 편리함을 제공하고 있지만, 스마트기기가 낯선 노년층에게는 또 다른 장벽과 소외감을 낳고 있습니다. 이 프로젝트는 노년층 사용자들이 AI 기술을 두려움이나 거부감 없이 받아들이고, 일상생활 속에서 유용하게 다룰 수 있도록 돕는 실질적인 디지털 안내서가 필요하다는 문제의식에서 출발했습니다.</p>
+                </div>
+                
+                <div class="pd-sec">
+                    <h2 class="pd-sec-title">콘텐츠 방향 및 기대 효과</h2>
+                    <p class="pd-sec-desc">어려운 기술 용어를 지양하고, 일상에서 흔히 겪을 수 있는 구체적인 예시들과 친근한 디자인의 모션 그래픽을 결합했습니다. 시각적인 애니메이션을 통해 스마트폰 내 AI 기능 설정이나 음성 비서 호출 등의 과정을 직관적으로 이해할 수 있게 제작되었습니다. 이를 통해 디지털 환경에 대한 진입 장벽을 낮추고, 자아 효능감과 기술적 자신감을 얻을 수 있도록 설계했습니다.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 80px;">
+                <a href="index.html" class="back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    프로젝트 목록으로
+                </a>
+            </div>
+        </section>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <span class="footer-team">일상에 깃든 AI</span>
+    <div class="footer-members">
+        <span>박성은</span>
+        <span>염지우</span>
+        <span>최서희</span>
+        <span>최지안</span>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Title Split Animation
+    const titles = document.querySelectorAll('.hh');
+    let delay = 0.2; // 초기 딜레이
+    
+    titles.forEach(title => {
+        const text = title.textContent.trim();
+        title.innerHTML = '';
+        const isNavbar = title.classList.contains('nav-brand');
+        const offset = isNavbar ? '6px' : '10px';
+        const blurVal = isNavbar ? '6px' : '8px';
+        
+        [...text].forEach(char => {
+            const span = document.createElement('span');
+            if (char === ' ') {
+                span.innerHTML = '&nbsp;';
+            } else {
+                span.textContent = char;
+            }
+            if (char === 'A' || char === 'I') {
+                span.classList.add('ai-bounce-char');
+                span.style.animationDelay = `${delay}s`;
+            } else {
+                span.style.opacity = '0';
+                span.style.filter = `blur(${blurVal})`;
+                span.style.display = 'inline-block';
+                span.style.transform = `translateY(${offset})`;
+                span.style.transition = 'opacity 0.5s ease-out, filter 0.5s ease-out, transform 0.5s ease-out';
+                span.style.transitionDelay = `${delay}s`;
+            }
+            title.appendChild(span);
+            delay += 0.15; // 글자당 간격
+        });
+        delay += 0.1; // 단어 사이 약간의 틈
+    });
+
+    // 렌더링 직후 실행하여 애니메이션 트리거
+    setTimeout(() => {
+        document.querySelectorAll('.hh span:not(.ai-bounce-char)').forEach(span => {
+            span.style.opacity = '1';
+            span.style.filter = 'blur(0px)';
+            span.style.transform = 'translateY(0)';
+        });
+        document.querySelectorAll('.hh span.ai-bounce-char').forEach(span => {
+            span.classList.add('animate');
+        });
+    }, 50);
+});
+</script>
+
+</body>
+</html>
